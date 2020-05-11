@@ -1,3 +1,5 @@
+import 'react-native-gesture-handler';
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 
@@ -59,13 +61,13 @@ function StartScreenBottomSection() {
   );
 }
 
-function StartScreen() {
+export default function App() {
   return (
-    <View style={styles.center}>
-      <StartScreenTopSection />
-      <StartScreenBottomSection />
-    </View>
+    <NavigationContainer>
+      <View style={styles.center}>
+        <StartScreenTopSection />
+        <StartScreenBottomSection />
+      </View>
+    </NavigationContainer>
   );
 }
-
-export default StartScreen;
