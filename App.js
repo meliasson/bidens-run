@@ -5,61 +5,71 @@ import React from 'react';
 import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 
 const styles = StyleSheet.create({
-  center: {
+  startScreen: {
     flex: 1,
-    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  gameScreen: {
     alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
-  fill: {
-    alignSelf: 'stretch',
-  },
-  startScreenTop: {
+  startScreenTitle: {
+    alignItems: 'center',
     backgroundColor: '#3c3b6e',
+    justifyContent: 'center',
+    width: '50%',
   },
-  startScreenTopText: {
+  startScreenTitleText: {
     color: '#ffffff',
     fontSize: 80,
     fontWeight: '900',
     textAlign: 'center',
     textTransform: 'uppercase',
   },
-  startScreenBottom: {
+  startScreenCallToAction: {
+    alignItems: 'center',
     backgroundColor: '#b22234',
+    justifyContent: 'center',
+    width: '50%',
   },
-  startScreenBottomText: {
-    textTransform: 'uppercase',
-    fontWeight: '900',
-    fontSize: 20,
-    borderStyle: 'solid',
+  startScreenCallToActionText: {
     borderColor: '#ffffff',
+    borderStyle: 'solid',
     borderWidth: 4,
     color: '#ffffff',
+    fontSize: 20,
+    fontWeight: '900',
     padding: 20,
+    textTransform: 'uppercase',
   },
 });
 
-function GameScreen() {
-  return (
-    <View style={styles.center}>
-      <Text>Game screen</Text>
-    </View>
-  );
-}
-
 function StartScreen({navigation}) {
   return (
-    <View style={styles.center}>
-      <View style={[styles.center, styles.fill, styles.startScreenTop]}>
-        <Text style={[styles.startScreenTopText]}>Biden's Run</Text>
+    <View style={styles.startScreen}>
+      <View style={[styles.startScreenTitle]}>
+        <Text style={[styles.startScreenTitleText]}>Biden's Run</Text>
       </View>
-      <View style={[styles.center, styles.fill, styles.startScreenBottom]}>
+      <View style={[styles.center, styles.startScreenCallToAction]}>
         <TouchableHighlight
           activeOpacity={0.6}
           underlayColor="#b22234"
           onPress={() => navigation.navigate('Game')}>
-          <Text style={[styles.startScreenBottomText]}>Press to play</Text>
+          <Text style={[styles.startScreenCallToActionText]}>
+            Press to play
+          </Text>
         </TouchableHighlight>
       </View>
+    </View>
+  );
+}
+
+function GameScreen() {
+  return (
+    <View style={styles.gameScreen}>
+      <Text>Game screen</Text>
     </View>
   );
 }
