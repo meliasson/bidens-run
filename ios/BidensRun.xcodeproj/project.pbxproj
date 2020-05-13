@@ -194,7 +194,6 @@
 				2C925BE7A9B3195FDC995E2B /* Pods-BidensRun-tvOSTests.debug.xcconfig */,
 				CDC2654D32C5253C7F93F974 /* Pods-BidensRun-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
