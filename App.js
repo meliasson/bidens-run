@@ -2,7 +2,17 @@ import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  View,
+} from 'react-native';
+
+import {GameEngine} from 'react-native-game-engine';
+import {Player, Tree} from './renderers';
+import {MoveCamera} from './systems';
 
 const styles = StyleSheet.create({
   startScreen: {
@@ -68,9 +78,35 @@ function StartScreen({navigation}) {
 
 function GameScreen() {
   return (
-    <View style={styles.gameScreen}>
-      <Text>Game screen</Text>
-    </View>
+    <GameEngine
+      style={styles.container}
+      systems={[MoveCamera]}
+      entities={{
+        0: {
+          isCameraFollowing: true,
+          position: [
+            Dimensions.get('window').width / 2,
+            Dimensions.get('window').height / 2,
+          ],
+          renderer: <Player />,
+        },
+        1: {
+          position: [1000, Dimensions.get('window').height / 2 + 50],
+          zIndex: -1,
+          renderer: <Tree />,
+        },
+        2: {
+          position: [1100, Dimensions.get('window').height / 2],
+          zIndex: 0,
+          renderer: <Tree />,
+        },
+        3: {
+          position: [1200, 0],
+          zIndex: 1,
+          renderer: <Tree />,
+        },
+      }}
+    />
   );
 }
 
